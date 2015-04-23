@@ -40,12 +40,12 @@ hold on
 [X_koord_2] = cos([0:45:355]*pi/180)*r
 [Y_koord_2] = -sin([0:45:355]*pi/180)*r
 [circle_2] = [X_koord_2;Y_koord_2]';
-plot(X_koord_2,Y_koord_2,'go-')
+plot(X_koord_2,Y_koord_2,'ko-')
 
 
 [Facegen_new_2] = round(inv(T.b)*(circle_2 - T.c(1:size(circle_2,1),:))*inv(T.T))
 hold on
-plot(Facegen_new_2(:,1),Facegen_new_2(:,2),'k-')
+plot(Facegen_new_2(:,1),Facegen_new_2(:,2),'m-')
 
 %plotting it with the same scale as the perfect circle
 factor=(circle_2(1,1)/Facegen_new_2(1,1));

@@ -12,7 +12,7 @@ M(end)    = 1;
 v1space_r = facespace*M;
 
 %save the matrix and the v1space_r (fitted v1 space)
-save(save_path,'M','v1space_r');
+save([save_path 'Mr.mat'],'M','v1space_r');
 
 figure
 plot(facespace(:,1),facespace(:,2),'ro-')
