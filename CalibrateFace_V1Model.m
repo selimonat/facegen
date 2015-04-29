@@ -41,10 +41,12 @@ for nf = 1:size(im,4)
     end
     if size(im,3) == 3        
         %merge
-        v1  = v1r(:,:,1)*.3 + v1r(:,:,2)*.59 + v1r(:,:,3)*.11;        
+        v1  = v1r(:,:,1)*.3 + v1r(:,:,2)*.59 + v1r(:,:,3)*.11;     
+    else
+        v1=v1r;
     end
     save(sprintf('%sV1_%02d.mat',imfolder_target,nf),'v1');
     %
     % save also as pic to see    
-    imwrite(Scale(v1r),sprintf('%s%02d_V1.bmp',imfolder_target,nf),'bmp');
+    imwrite(Scale(v1),sprintf('%s%02d_V1.bmp',imfolder_target,nf),'bmp');
 end
