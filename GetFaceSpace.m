@@ -12,6 +12,6 @@ function [face_space]= GetFaceSpace
 % 
 % 5 circles
 face_space=textread('/Users/onat/Dropbox/feargen_lea/EthnoMaster/smoothingbusiness/5circles_RGB/circle_calculation_txt.txt');
-
+%face_space=textread('C:\Users\onat\Desktop\FaceSimilarityQuantification\SAVEDDROPBOX\5circles_RGB\circle_calculation_txt.txt');
 
 face_space=face_space-repmat(mean(face_space),[size(face_space,1),1]);
