@@ -1,4 +1,4 @@
-function [imfolder_target]=CalibrateFace_V1Model(path2stim)
+function [imfolder_target]=CalibrateFace_V1Model(path2stim,nScale)
 %[imfolder]=CalibrateFaces_V1EuclidianDistance(path2stim)
 %
 %   Computes V1 responses using V1 complex cell model used in Yue et
@@ -33,8 +33,8 @@ GridPosition  = [];
 for nf = 1:size(im,4)
     fprintf('Processing face %d\n',nf);
     for nd = 1:size(im,3)
-        %(image,simpleORComplex[0 1],GridSize[0 1 2],sigma)
-        [dummy]     = GWTWgrid_Simple(im(:,:,nd,nf),0,2);
+        %(image,simpleORComplex[0 1],GridSize[0 1 2],nScale,sigma)
+        [dummy]     = GWTWgrid_Simple(im(:,:,nd,nf),0,2,nScale);
         % average across filters
         dummy       = mean(dummy,2);
         v1r(:,:,nd) = imrotate(reshape(dummy(:),size(im,1),size(im,2)),-90);        
@@ -47,6 +47,8 @@ for nf = 1:size(im,4)
     end
     save(sprintf('%sV1_%02d.mat',imfolder_target,nf),'v1');
     %
-    % save also as pic to see    
-    imwrite(Scale(v1),sprintf('%s%02d_V1.bmp',imfolder_target,nf),'bmp');
+    % save also as pic to see (just one now, simply to look at)
+    if nf==1
+        imwrite(Scale(v1),sprintf('%s%02d_V1.bmp',imfolder_target,nf),'bmp');
+    end
 end
