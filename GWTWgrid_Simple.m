@@ -88,6 +88,11 @@ elseif SizeX == 400
     [xx,yy] = meshgrid(RangeXY,RangeXY);
     Grid    = xx + yy*i;
     Grid    = Grid(:);
+elseif SizeX == 1000
+    RangeXY = 1:1000;
+    [xx,yy] = meshgrid(RangeXY,RangeXY);
+    Grid    = xx + yy*i;
+    Grid    = Grid(:);
 else
     disp('The image has to be 256*256 or 128*128. Please try again');
     return;
